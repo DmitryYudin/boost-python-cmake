@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 project(hello_ext)
 
-find_package(Python3 REQUIRED COMPONENTS Development.Module NumPy)
+find_package(Python3 REQUIRED COMPONENTS Development NumPy)
 find_package(Boost REQUIRED COMPONENTS system python)
 
 add_library(${PROJECT_NAME} MODULE src/hello.cpp) # ~= SHARED
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} Python3::Module Python3::NumPy)
+target_link_libraries(${PROJECT_NAME} Python3::Python Python3::NumPy)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "") # Suppress 'lib' prefix
 
